@@ -5,9 +5,9 @@ name: BRISE-CI
 
 on:
   push:
-    branches: [ master, dev ]
+    branches: [ test-fix-dependencies-amd-info ]
   pull_request:
-    branches: [ master, dev ]
+    branches: [ test-fix-dependencies-amd-info ]
 
 jobs:
   docker-build:
