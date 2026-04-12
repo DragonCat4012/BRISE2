@@ -67,16 +67,13 @@ jobs:
         conda activate brise-260
         conda env export --name brise-260 > full-environment.yml
         conda list --explicit > conda-explicit.txt
+        echo "=== conda explicit (exact URLs) ==="
+        cat conda-explicit.txt
 
-    - name: Print full conda package list (versions/builds/channels)
-      run: |
-        conda activate brise-260
         conda list --explicit > conda-explicit.txt
         conda list --show-channel-urls > conda-list.txt
         echo "=== conda list (show-channel-urls) ==="
         cat conda-list.txt
-        echo "=== conda explicit (exact URLs) ==="
-        cat conda-explicit.txt
     - name: Test with pytest
       shell: bash -el {0}
       run: |
