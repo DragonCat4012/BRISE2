@@ -59,6 +59,17 @@ jobs:
         flake8 . --config tox.ini --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=50 --max-line-length=300 --statistics
+    - name: Export full conda environment.yml
+      shell: bash -l {0}
+      run: |
+        source "$HOME/miniconda/etc/profile.d/conda.sh"
+        command -v conda || export PATH="$HOME/miniconda/bin:$PATH"
+        conda activate brise-260
+        conda env export --name brise-260 > full-environment.yml
+        conda list --explicit > conda-explicit.txt
+        echo "=== conda explicit (exact URLs) ==="
+        cat conda-explicit.txt
+
     - name: Print full conda package list (versions/builds/channels)
       run: |
         conda activate brise-260
