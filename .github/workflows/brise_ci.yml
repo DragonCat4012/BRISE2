@@ -62,14 +62,7 @@ jobs:
     - name: Export full conda environment.yml
       shell: bash -l {0}
       run: |
-        if [ -n "${CONDA:-}" ] && [ -f "${CONDA}/etc/profile.d/conda.sh" ]; then
-          . "${CONDA}/etc/profile.d/conda.sh"
-        elif [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
-          . "$HOME/miniconda/etc/profile.d/conda.sh"
-        else
-          export PATH="/usr/share/miniconda3/bin:$HOME/miniconda/bin:$PATH"
-          command -v conda >/dev/null 2>&1 || { echo "conda not found"; exit 1; }
-        fi
+        conda init bash
 
         conda activate brise-260
         conda env export --name brise-260 > full-environment.yml
