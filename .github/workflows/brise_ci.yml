@@ -61,7 +61,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=50 --max-line-length=300 --statistics
     - name: Print full conda package list (versions/builds/channels)
       run: |
-        conda activate ci-env
+        conda activate brise-260
         conda list --explicit > conda-explicit.txt
         conda list --show-channel-urls > conda-list.txt
         echo "=== conda list (show-channel-urls) ==="
