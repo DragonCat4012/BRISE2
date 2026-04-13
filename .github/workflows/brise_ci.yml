@@ -8,6 +8,11 @@ on:
     branches: [ test-fix-dependencies-amd-info ]
   pull_request:
     branches: [ test-fix-dependencies-amd-info ]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual run'
+        required: false
 
 jobs:
   docker-build:
