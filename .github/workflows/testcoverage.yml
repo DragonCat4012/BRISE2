@@ -40,8 +40,12 @@ jobs:
       with:
         python-version: 3.12
     - name: Remove prev Conda ev
+      shell: bash -el {0}
       run: |
+        python -c "import sklearn; print(sklearn.__version__, sklearn.__file__)"
         conda env remove -n brise-260 || true
+        echo "Removed prev env"
+        python -c "import sklearn; print(sklearn.__version__, sklearn.__file__)"
     # Set up Miniconda
     - name: Set up Miniconda
       uses: conda-incubator/setup-miniconda@v2
