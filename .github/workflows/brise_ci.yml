@@ -70,14 +70,8 @@ jobs:
         conda init bash
 
         conda activate brise-260
-        conda env export --name brise-260 > full-environment.yml
-        conda list --explicit > conda-explicit.txt
-        echo "=== conda explicit (exact URLs) ==="
-        cat conda-explicit.txt
-        conda list --explicit > conda-explicit.txt
-        conda list --show-channel-urls > conda-list.txt
-        echo "=== conda list (show-channel-urls) ==="
-        cat conda-list.txt
+        #  print scikit-learn version, should be 1.5.2
+        python -c "import sklearn; print(sklearn.__version__, sklearn.__file__)"
     - name: Test with pytest
       shell: bash -el {0}
       run: |
