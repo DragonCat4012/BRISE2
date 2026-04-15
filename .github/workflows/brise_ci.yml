@@ -50,7 +50,8 @@ jobs:
     - name: Remove prev Conda ev
       shell: bash -el {0}
       run: |
-        conda env remove -n brise-260 || true
+        conda env list
+        conda env remove -n brise-260
         echo "Removed prev env"
     # Set up Miniconda
     - name: Set up Miniconda
