@@ -47,12 +47,6 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: 3.12
-    - name: Remove prev Conda ev
-      shell: bash -el {0}
-      run: |
-        conda env list
-        conda env remove -n brise-260
-        echo "Removed prev env"
     # Set up Miniconda
     - name: Set up Miniconda
       uses: conda-incubator/setup-miniconda@v2
