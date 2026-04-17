@@ -30,8 +30,6 @@ ENV BRISE_DATABASE_USER=${BRISE_DATABASE_USER}
 ARG BRISE_DATABASE_PASS
 ENV BRISE_DATABASE_PASS=${BRISE_DATABASE_PASS}
 
-RUN conda run -n brise-260 conda install -y scikit-learn=1.5.2
-
 CMD conda init bash && \
     . ~/.bashrc && \
     conda activate brise-260 && \

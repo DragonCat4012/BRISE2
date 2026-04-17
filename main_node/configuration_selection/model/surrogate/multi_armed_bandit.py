@@ -60,6 +60,7 @@ class MultiArmedBandit(Surrogate):
         for hp in self.region:
             for feature_category in hp.categories:
                 exploration_rate = np.sqrt(
+                    # TODO: RuntimeWarning: divide by zero encountered in divide
                     np.divide(
                         2 * np.log(len(transformed_labels)),
                         categories_info[hp.name][feature_category]["times used"]
