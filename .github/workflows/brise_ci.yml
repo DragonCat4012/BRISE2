@@ -21,7 +21,7 @@ jobs:
     - name: Set Up Docker Compose
       run: |
         sudo apt-get update
-        sudo apt-get install -y docker-compose --no-cache
+        sudo apt-get install -y docker-compose
   
     - name: Set environmental variables
       shell: bash -el {0}
