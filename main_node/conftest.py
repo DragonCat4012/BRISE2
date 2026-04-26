@@ -376,7 +376,7 @@ def get_energy_tasks():
 @pytest.fixture(scope='function')
 def get_energy_experiment_and_search_space():
     experiment_description, search_space = load_experiment_setup("./Resources/EnergyExperiment/EnergyExperiment.json")
-    yield experiment_description, search_space
+    return experiment_description, search_space
 
 
 @pytest.fixture(scope='function')
