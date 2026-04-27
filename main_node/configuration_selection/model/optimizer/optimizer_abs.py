@@ -129,3 +129,22 @@ class Optimizer(ABC):
         else:
             transformed_labels = labels
         return transformed_labels
+
+    def fit_transformers(self, features: pd.DataFrame):
+        """
+        Fits all configuration transformers associated with the optimizer 
+        using the provided feature data.
+        """
+        for ct, parameters in self.mapping_config_transformer_parameter.items():
+            relevant_feature_names = [hp.name for hp in parameters]
+            # Ensure the required columns exist in the provided dataframe
+            if all(name in features.columns for name in relevant_feature_names):
+                # Extract relevant data and fit the transformer
+                transformation_data = features[relevant_feature_names]
+                if hasattr(ct, 'fit'):
+                    ct.fit(transformation_data)
+                else:
+                    # Fallback for transformers that might not have a direct fit method
+                    # but wrap a sklearn object that does.
+                    return
+                   # self.logger.warning(f"Transformer {ct} missing fit method.")
