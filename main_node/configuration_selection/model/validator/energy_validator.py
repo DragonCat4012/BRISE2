@@ -18,13 +18,13 @@ class EnergyValidator(Validator):
         
         if not is_built:
             return False, 0 
-        results = self._optimizer.optimize(surrogate)
-
-    
+        
         for ct, parameters in self._optimizer.mapping_config_transformer_parameter.items():
             relevant_feature_names = [p.name for p in parameters]
-            if all(col in features.columns for col in relevant_feature_names):
-                ct.fit(features[relevant_feature_names]) 
+            
+            if hasattr(ct, 'fit') and all(name in features.columns for name in relevant_feature_names):
+                transformation_data = features[relevant_feature_names]
+                ct.fit(transformation_data)
 
         results = self._optimizer.optimize(surrogate)
 
