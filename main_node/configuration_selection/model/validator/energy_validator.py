@@ -14,11 +14,19 @@ class EnergyValidator(Validator):
         self._optimizer = RandomSearch(optimizer_description, self.region, self.objectives)
 
     def validate(self, surrogate: Surrogate, features: pd.DataFrame, labels: pd.DataFrame) -> Tuple[bool, float]:
+        is_built = surrogate.create(features, labels)
+        
+        if not is_built:
+            return False, 0 # Validation fails if the model cannot be fitted
+            
+        # Now it is safe to call optimize, which internally calls surrogate.predict()
         results = self._optimizer.optimize(surrogate)
+        
         if all(results["energy"] > 0):
             return True, 0
         else:
             return False, 0
+        
 
     def train_test_split(self,
                          features: pd.DataFrame,
