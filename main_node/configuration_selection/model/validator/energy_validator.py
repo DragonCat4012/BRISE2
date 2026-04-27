@@ -17,15 +17,23 @@ class EnergyValidator(Validator):
         is_built = surrogate.create(features, labels)
         
         if not is_built:
-            return False, 0 # Validation fails if the model cannot be fitted
-            
-        # Now it is safe to call optimize, which internally calls surrogate.predict()
+            return False, 0 
         results = self._optimizer.optimize(surrogate)
-        
+
+    
+        for ct, parameters in self._optimizer.mapping_config_transformer_parameter.items():
+            relevant_feature_names = [p.name for p in parameters]
+            if all(col in features.columns for col in relevant_feature_names):
+                ct.fit(features[relevant_feature_names]) 
+
+        results = self._optimizer.optimize(surrogate)
+
         if all(results["energy"] > 0):
             return True, 0
         else:
             return False, 0
+        
+        is_built = surrogate.create(features, labels)
         
 
     def train_test_split(self,
