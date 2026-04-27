@@ -19,15 +19,7 @@ class EnergyValidator(Validator):
         if not is_built:
             return False, 0 
         
-        for ct, parameters in self._optimizer.mapping_config_transformer_parameter.items():
-            # Identify names of parameters this transformer handles
-            relevant_feature_names = [p.name for p in parameters]
-            
-            # Check if the transformer has a fit method and we have data for it
-            if all(name in features.columns for name in relevant_feature_names):
-            # Extract data and call fit. 
-            # Note: Ensure SklearnFloatTransformer implements a 'fit' method.
-                ct.fit(features[relevant_feature_names])
+        self._optimizer.fit_transformers(features)
 
         # 3. Proceed with optimization safely
         results = self._optimizer.optimize(surrogate)
