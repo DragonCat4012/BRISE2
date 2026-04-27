@@ -141,10 +141,10 @@ class Optimizer(ABC):
             if all(name in features.columns for name in relevant_feature_names):
                 # Extract relevant data and fit the transformer
                 transformation_data = features[relevant_feature_names]
-                if hasattr(ct, 'fit'):
-                    ct.fit(transformation_data)
-                else:
-                    # Fallback for transformers that might not have a direct fit method
-                    # but wrap a sklearn object that does.
-                    return
-                   # self.logger.warning(f"Transformer {ct} missing fit method.")
+                try:
+                    if hasattr(ct, 'fit'):
+                        ct.fit(transformation_data)
+                    elif hasattr(ct, 'surrogate_instance') and hasattr(ct.surrogate_instance, 'fit'):
+                        ct.surrogate_instance.fit(transformation_data)
+                except Exception as e:
+                    print(f"Failed to fit transformer {ct}: {e}")
