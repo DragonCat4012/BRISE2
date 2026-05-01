@@ -26,6 +26,13 @@
   "policies": [],
   "queues": [
     {
+      "name": "events-v1",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
       "name": "front_log_queue",
       "vhost": "/",
       "durable": true,
@@ -153,7 +160,6 @@
     }
   ],
   "exchanges": [
-
     {
       "name": "experiment_termination_exchange",
       "vhost": "/",
@@ -163,7 +169,6 @@
       "internal": false,
       "arguments": {}
     },
-
     {
       "name": "task_result_exchange",
       "vhost": "/",
