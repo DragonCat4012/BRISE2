@@ -15,7 +15,7 @@ from tools.restore_db import RestoreDB
 rdb = RestoreDB()
 
 
-@pytest.skip(reason="Grrr")
+@pytest.mark.skip(reason="Grrr")
 class TestConfigurationSelection:
 
     def test_0(self, get_experiment, get_workers, get_configurations_2_float):
