@@ -11,30 +11,6 @@ from tools.mongo_dao import MongoDB
 from tools.rabbitmq_common_tools import RabbitMQConnection, publish
 
 
-class StopConditionValidatorMock(StopConditionValidator):
-    def __init__(self, experiment_id: str, experiment_description: dict):
-        self.database = MongoDB(os.getenv("BRISE_DATABASE_HOST"),
-                                os.getenv("BRISE_DATABASE_PORT"),
-                                os.getenv("BRISE_DATABASE_NAME"),
-                                os.getenv("BRISE_DATABASE_USER"),
-                                os.getenv("BRISE_DATABASE_PASS"))
-
-        self.experiment_id = experiment_id
-        self.logger = logging.getLogger(__name__)
-        self.active = True
-        self.expression = experiment_description["StopCondition"]["StopConditionTriggerLogic"]["Expression"]
-        self.stop_condition_states = {}
-
-        for sc_key in experiment_description["StopCondition"]["Instance"]:
-            if re.search(experiment_description["StopCondition"]["Instance"][sc_key]["Name"], self.expression):
-                self.stop_condition_states[experiment_description["StopCondition"]["Instance"][sc_key]["Name"]] = False
-
-        self.expression = self.expression.replace("or", "|").replace("and", "&")
-        self.repetition_interval = datetime.timedelta(**{
-            experiment_description["StopCondition"]["StopConditionTriggerLogic"]["InspectionParameters"]["TimeUnit"]:
-            experiment_description["StopCondition"]["StopConditionTriggerLogic"]["InspectionParameters"]["RepetitionPeriod"]}).total_seconds()
-
-
 class StopConditionValidator:
     """
     Main idea is to create executable boolean math expression from the different stop conditions
@@ -161,3 +137,26 @@ class EventServiceConnection(RabbitMQConnection):
                                    on_message_callback=self.stop_condition_validator.validate_conditions)
         self.channel.basic_consume(queue=self.termination_queue_name, auto_ack=True,
                                    on_message_callback=self.stop_condition_validator.stop_thread)
+
+class StopConditionValidatorMock(StopConditionValidator):
+    def __init__(self, experiment_id: str, experiment_description: dict):
+        self.database = MongoDB(os.getenv("BRISE_DATABASE_HOST"),
+                                os.getenv("BRISE_DATABASE_PORT"),
+                                os.getenv("BRISE_DATABASE_NAME"),
+                                os.getenv("BRISE_DATABASE_USER"),
+                                os.getenv("BRISE_DATABASE_PASS"))
+
+        self.experiment_id = experiment_id
+        self.logger = logging.getLogger(__name__)
+        self.active = True
+        self.expression = experiment_description["StopCondition"]["StopConditionTriggerLogic"]["Expression"]
+        self.stop_condition_states = {}
+
+        for sc_key in experiment_description["StopCondition"]["Instance"]:
+            if re.search(experiment_description["StopCondition"]["Instance"][sc_key]["Name"], self.expression):
+                self.stop_condition_states[experiment_description["StopCondition"]["Instance"][sc_key]["Name"]] = False
+
+        self.expression = self.expression.replace("or", "|").replace("and", "&")
+        self.repetition_interval = datetime.timedelta(**{
+            experiment_description["StopCondition"]["StopConditionTriggerLogic"]["InspectionParameters"]["TimeUnit"]:
+            experiment_description["StopCondition"]["StopConditionTriggerLogic"]["InspectionParameters"]["RepetitionPeriod"]}).total_seconds()
