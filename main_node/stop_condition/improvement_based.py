@@ -7,6 +7,7 @@ class ImprovementBasedType(StopCondition):
     def __init__(self, stop_condition_parameters: dict, experiment_description: dict, experiment_id: str):
         super().__init__(stop_condition_parameters, experiment_description, experiment_id)
         self.max_configs_without_improvement = stop_condition_parameters["Parameters"]["MaxConfigsWithoutImprovement"]
+        self.start_threads()
 
     def is_finish(self):
         measured_configurations = self.database.get_records_by_experiment_id("Configuration", self.experiment_id)
@@ -26,4 +27,4 @@ class ImprovementBasedType(StopCondition):
 class ImprovementBasedTypeMock(ImprovementBasedType):
     def __init__(self, stop_condition_parameters: dict, experiment_description: dict, experiment_id: str):
         super().__init__(stop_condition_parameters, experiment_description, experiment_id)
-        self.start_threads()
+        self.max_configs_without_improvement = stop_condition_parameters["Parameters"]["MaxConfigsWithoutImprovement"]
