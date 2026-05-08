@@ -5,12 +5,13 @@ from core_entities.experiment import Experiment
 from repeater.repeater_selector import RepeaterOrchestration
 from stop_condition.quantity_based import QuantityBasedType as RMQuantityBasedType
 from repeater.acceptable_error_based import AcceptableErrorBasedTypeMock
-from stop_condition.stop_condition_selector import launch_stop_condition_threads
+from stop_condition.stop_condition_selector import launch_stop_condition_threads_mock as launch_stop_condition_threads
+
 from stop_condition.bad_configuration_based import BadConfigurationBasedTypeMock
 from stop_condition.guaranteed import GuaranteedTypeMock
 
 import stop_condition.time_based as tb_mod
-tb_mod.TimeBased = TimeBasedMock
+tb_mod.TimeBased = tb_mod.TimeBasedMock
 
 from stop_condition.quantity_based import QuantityBasedType as SCQuantityBasedType
 from stop_condition.few_shot_learning_based import FewShotLearningBasedMock
