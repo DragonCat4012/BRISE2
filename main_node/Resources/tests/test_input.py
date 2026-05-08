@@ -6,11 +6,10 @@ from repeater.repeater_selector import RepeaterOrchestration
 from repeater.quantity_based import QuantityBasedType as RMQuantityBasedType
 from repeater.acceptable_error_based import AcceptableErrorBasedTypeMock
 from stop_condition.stop_condition_selector import launch_stop_condition_threads
-from stop_condition.bad_configuration_based import BadConfigurationBasedType
-from stop_condition.guaranteed import GuaranteedType
+from stop_condition.bad_configuration_based import BadConfigurationBasedTypeMock
+from stop_condition.guaranteed import GuaranteedTypeMock
 from stop_condition.time_based import TimeBased
 from stop_condition.quantity_based import QuantityBasedType as SCQuantityBasedType
-from stop_condition.guaranteed import GuaranteedType
 from stop_condition.few_shot_learning_based import FewShotLearningBased
 from configuration_selection.configuration_selection import ConfigurationSelection
 from configuration_selection.model.validator.quality_validator import QualityValidator
@@ -50,7 +49,7 @@ class TestInput:
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
         activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
-        assert isinstance(activatedSCs[0], BadConfigurationBasedType)
+        assert isinstance(activatedSCs[0], BadConfigurationBasedTypeMock)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), RMQuantityBasedType)
@@ -133,7 +132,7 @@ class TestInput:
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
         activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
-        assert isinstance(activatedSCs[0], GuaranteedType)
+        assert isinstance(activatedSCs[0], GuaranteedTypeMock)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), RMQuantityBasedType)
@@ -171,7 +170,7 @@ class TestInput:
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
         activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
-        assert isinstance(activatedSCs[0], BadConfigurationBasedType)
+        assert isinstance(activatedSCs[0], BadConfigurationBasedTypeMock)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedTypeMock)
@@ -283,7 +282,7 @@ class TestInput:
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
         activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
-        assert isinstance(activatedSCs[0], GuaranteedType)
+        assert isinstance(activatedSCs[0], GuaranteedTypeMock)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), RMQuantityBasedType)
@@ -319,7 +318,7 @@ class TestInput:
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
         activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
-        assert isinstance(activatedSCs[0], GuaranteedType)
+        assert isinstance(activatedSCs[0], GuaranteedTypeMock)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedTypeMock)
@@ -477,7 +476,7 @@ class TestInput:
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
         activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
-        assert isinstance(activatedSCs[0], GuaranteedType)
+        assert isinstance(activatedSCs[0], GuaranteedTypeMock)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedTypeMock)
@@ -562,7 +561,7 @@ class TestInput:
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
         activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
-        assert isinstance(activatedSCs[0], BadConfigurationBasedType)
+        assert isinstance(activatedSCs[0], BadConfigurationBasedTypeMock)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedTypeMock)
