@@ -3,7 +3,7 @@ import pytest
 from core_entities.experiment import Configuration
 from core_entities.experiment import Experiment
 from repeater.repeater_selector import RepeaterOrchestration
-from repeater.quantity_based import QuantityBasedType as RMQuantityBasedType
+from repeater.quantity_based import QuantityBasedTypeMock as RMQuantityBasedType
 from repeater.acceptable_error_based import AcceptableErrorBasedTypeMock
 from stop_condition.stop_condition_selector import launch_stop_condition_threads
 from stop_condition.bad_configuration_based import BadConfigurationBasedTypeMock
