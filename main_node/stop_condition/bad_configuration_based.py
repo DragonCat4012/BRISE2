@@ -16,7 +16,6 @@ class BadConfigurationBasedType(StopCondition):
         self.logger.debug(f"Currently {bad_configurations_number} bad Configurations in Experiment.")
 
 class BadConfigurationBasedTypeMock(BadConfigurationBasedType):
-    super().__init__(stop_condition_parameters, experiment_description, experiment_id)
-    #self.threshold = stop_condition_parameters["Parameters"]["MaxBadConfigurations"]
-
-    self.start_threads()
+    def __init__(self, stop_condition_parameters: dict, experiment_description: dict, experiment_id: str):
+        super().__init__(stop_condition_parameters, experiment_description, experiment_id)
+        self.start_threads()
