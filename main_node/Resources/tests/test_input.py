@@ -8,7 +8,10 @@ from repeater.acceptable_error_based import AcceptableErrorBasedTypeMock
 from stop_condition.stop_condition_selector import launch_stop_condition_threads
 from stop_condition.bad_configuration_based import BadConfigurationBasedTypeMock
 from stop_condition.guaranteed import GuaranteedTypeMock
-from stop_condition.time_based import TimeBasedMock
+
+import stop_condition.time_based as tb_mod
+tb_mod.TimeBased = TimeBasedMock
+
 from stop_condition.quantity_based import QuantityBasedType as SCQuantityBasedType
 from stop_condition.few_shot_learning_based import FewShotLearningBasedMock
 from configuration_selection.configuration_selection import ConfigurationSelection
