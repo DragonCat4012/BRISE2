@@ -32,7 +32,7 @@ def launch_stop_condition_threads(experiment_id: str, experiment: Experiment = N
     parameters = experiment_description["StopCondition"]
 
     stop_condition_validator_class = reflective_class_import(class_name="StopConditionValidator", folder_path="stop_condition")
-    stop_condition_validator_class(experiment_id, experiment_description)
+    stop_condition_validator_class(experiment_id, experiment_description, isMock)
     logger.debug("Assigned Stop Condition validator.")
 
     activated_scs = []
