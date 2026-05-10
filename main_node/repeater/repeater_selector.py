@@ -25,6 +25,7 @@ class RepeaterOrchestration:
         """
         :param experiment_id: ID of experiment, required to get experiment description from DB
         :param experiment: Experiment class instance, (!)used only in tests
+        :param isMock: Flag indicating if the repeater is in mock mode
         """
         self.logger = logging.getLogger(__name__)
         self.experiment_id = experiment_id
@@ -95,9 +96,9 @@ class RepeaterOrchestration:
         msg = parameters["Instance"][feature_name]["Type"]
         logger.debug(f"Assigned {msg} Repetition Management strategy.")
         if not self.isMock:
-            return repeater_class(self.experiment_description, self.experiment_id)
+            return repeater_class(self.experiment_description, self.experiment_id, self.isMock)
         else:
-            return repeater_class(self.experiment_description, self.experiment_id, self.experiment)
+            return repeater_class(self.experiment_description, self.experiment_id, self.experiment, self.isMock)
 
     def evaluation_by_type(self, current_configuration: Configuration):
         """
