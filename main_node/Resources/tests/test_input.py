@@ -55,7 +55,7 @@ class TestInput:
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), RMQuantityBasedType)
         # configuration selection
-        cs = ConfigurationSelection(experiment)
+        cs = ConfigurationSelection(experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].mapping_config_transformer_parameter) == 1
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].value_transformers) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_optimizer_objective.keys())[0].mapping_config_transformer_parameter) == 1
@@ -99,7 +99,7 @@ class TestInput:
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
         # configuration selection
-        cs = ConfigurationSelection(experiment)
+        cs = ConfigurationSelection(experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].mapping_config_transformer_parameter) == 1
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].value_transformers) == 1
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_optimizer_objective.keys())[0].mapping_config_transformer_parameter) == 1
@@ -137,7 +137,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), RMQuantityBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].mapping_config_transformer_parameter) == 4
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].value_transformers) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_optimizer_objective.keys())[0].mapping_config_transformer_parameter) == 4
@@ -175,7 +175,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].mapping_config_transformer_parameter) == 4
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].value_transformers) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_optimizer_objective.keys())[0].mapping_config_transformer_parameter) == 2
@@ -211,7 +211,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
                        0].mapping_config_transformer_parameter) == 1
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
@@ -251,7 +251,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].mapping_config_transformer_parameter) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].value_transformers) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_optimizer_objective.keys())[0].mapping_config_transformer_parameter) == 1
@@ -287,7 +287,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), RMQuantityBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
                        0].mapping_config_transformer_parameter) == 1
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
@@ -323,7 +323,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
                        0].mapping_config_transformer_parameter) == 1
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
@@ -363,7 +363,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), RMQuantityBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
                        0].mapping_config_transformer_parameter) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
@@ -398,7 +398,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), RMQuantityBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
                        0].mapping_config_transformer_parameter) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
@@ -443,7 +443,7 @@ class TestInput:
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
         # configuration selection
-        cs = ConfigurationSelection(experiment)
+        cs = ConfigurationSelection(experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].mapping_config_transformer_parameter) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].value_transformers) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_optimizer_objective.keys())[0].mapping_config_transformer_parameter) == 0
@@ -482,7 +482,7 @@ class TestInput:
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
         # configuration selection
-        cs = ConfigurationSelection(experiment)
+        cs = ConfigurationSelection(experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
                        0].mapping_config_transformer_parameter) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
@@ -526,7 +526,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
                        0].mapping_config_transformer_parameter) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
@@ -567,7 +567,7 @@ class TestInput:
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
         # configuration selection
-        cs = ConfigurationSelection(experiment)
+        cs = ConfigurationSelection(experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].mapping_config_transformer_parameter) == 4
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[0].value_transformers) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_optimizer_objective.keys())[0].mapping_config_transformer_parameter) == 4
@@ -603,7 +603,7 @@ class TestInput:
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment)
         assert isinstance(r.get_repeater(), AcceptableErrorBasedType)
-        cs = ConfigurationSelection(experiment=experiment)
+        cs = ConfigurationSelection(experiment=experiment, isMock=True)
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
                        0].mapping_config_transformer_parameter) == 0
         assert len(list(list(cs.predictor.mapping_region_model.values())[0].mapping_surrogate_objective.keys())[
