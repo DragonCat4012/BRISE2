@@ -49,7 +49,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], BadConfigurationBasedType)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -93,7 +93,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], TimeBased)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -132,7 +132,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], GuaranteedType)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -170,7 +170,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], BadConfigurationBasedType)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -206,7 +206,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], FewShotLearningBased)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -246,7 +246,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], TimeBased)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -282,7 +282,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], GuaranteedType)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -318,7 +318,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], GuaranteedType)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -358,7 +358,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], TimeBased)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -393,7 +393,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], FewShotLearningBased)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -437,7 +437,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], TimeBased)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -476,7 +476,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], GuaranteedType)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -521,7 +521,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], FewShotLearningBased)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -561,7 +561,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id,experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], BadConfigurationBasedType)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
@@ -598,7 +598,7 @@ class TestInput:
         Configuration.set_task_config(experiment.description["Context"]["TaskConfiguration"])
         assert experiment.description["Context"]["TaskConfiguration"]["TaskName"] == expected_experiment
         # launch_stop_condition_threads without threading
-        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment)
+        activatedSCs = launch_stop_condition_threads(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
         assert isinstance(activatedSCs[0], FewShotLearningBased)
         # repetition management
         r = RepeaterOrchestration(experiment_id=experiment.unique_id, experiment=experiment, isMock=True)
