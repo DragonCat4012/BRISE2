@@ -4,8 +4,6 @@ import pytest
 from tools.front_API import API, APIMessageBuilder
 from tools.rabbit_API_class import RabbitApi
 
-os.environ["TEST_MODE"] = 'UNIT_TEST'
-
 class TestFrontApi:
     # this test set is aimed to cover the functionality of the 'front_API' tools and the 'singleton'
 
