@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
+import inspect
+import logging
 import pandas as pd
 from typing import Tuple, Dict
-
+from sklearn.utils.validation import check_is_fitted
 
 class ConfigurationTransformer(ABC):
     def __init__(self, configuration_transformer_description: Dict, relevant_parameters: Tuple):
@@ -29,10 +31,25 @@ class ConfigurationTransformer(ABC):
         """
         Helper method for sklearn inverse transformation, which is identical for all parameter types.
         """
+        logger = logging.getLogger(__name__)
         result = pd.DataFrame()
         for old_f, new_f in self.mapping_old_new_features.items():
             if any([f in transformed_features.columns for f in new_f]) is False:
                 continue  # some parameters within the mapping can be irrelevant and are skipped
+            logger.warning("ABS inverse transform called") # sometimes not fit here
+
+            pipeline = mapping_old_feature_pipeline[old_f]
+            try:
+               # check_is_fitted(pipeline)
+                check_is_fitted(pipeline)
+            except Exception:
+                logger.warning("Pipeline not fitted qwq")
+               # pipeline.fit(old_f)
+
+        
+            #logger.warning(inspect.getsource(pipeline.inverse_transform))
+
+
             transformed = mapping_old_feature_pipeline[old_f].inverse_transform(transformed_features[new_f])
             if result.empty:
                 result = transformed
