@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import pandas as pd
 from typing import Tuple, Dict
 
+
 class ConfigurationTransformer(ABC):
     def __init__(self, configuration_transformer_description: Dict, relevant_parameters: Tuple):
         self.configuration_transformer_description = configuration_transformer_description
