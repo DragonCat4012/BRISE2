@@ -1,5 +1,3 @@
-import logging
-
 import pandas as pd
 
 from typing import List
@@ -61,8 +59,6 @@ class SklearnColumnTransformer(BaseEstimator, TransformerMixin):
         self._enc_suffix = f"_{self.transformer.__class__.__name__}"
 
     def fit(self, df: pd.DataFrame, y=None, **fit_params):
-        logger = logging.getLogger(__name__)
-        logger.warning("´fit in coloum encoder")
         if not self.input_column_names:
             # If column_names parameter was provided in 'fit' - use it, otherwise - apply transformation to all columns.
             self.input_column_names = fit_params.get("column_names", None) or df.keys().tolist()
@@ -71,8 +67,6 @@ class SklearnColumnTransformer(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, df: pd.DataFrame, y=None) -> pd.DataFrame:
-        logger = logging.getLogger(__name__)
-        logger.warning("transform")
         df = df.copy(deep=True)
         df['temp_index'] = range(1, len(df) + 1)
         # Select needed columns
@@ -94,9 +88,6 @@ class SklearnColumnTransformer(BaseEstimator, TransformerMixin):
         return df
 
     def inverse_transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        logger = logging.getLogger(__name__)
-        logger.warning("inv transform")
-
         df = df.copy(deep=True)
         # Select and transform back needed columns
         to_transform = df[self.out_column_names]
